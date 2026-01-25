@@ -108,8 +108,34 @@
             letter-spacing: 0.05em;
         }
 
+        .activity-type-group {
+            margin-bottom: 1rem;
+        }
+
+        .activity-type-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .activity-type-header {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: #fc4c02;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .activity-type-summary {
+            font-weight: 400;
+            color: #888;
+            font-size: 0.75rem;
+        }
+
         .activity {
-            padding: 0.75rem 0;
+            padding: 0.5rem 0;
             border-bottom: 1px solid #f5f5f5;
         }
 
@@ -120,15 +146,16 @@
 
         .activity-name {
             font-weight: 500;
-            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.125rem;
         }
 
         .activity-meta {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             color: #666;
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         /* AI News Section */
@@ -320,7 +347,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                 </svg>
-                Strava
+                Strava <span style="font-weight: 400; text-transform: none; margin-left: 0.25rem;">(last 7 days)</span>
             </h2>
             <div class="strava-stats" id="strava-stats">
                 <div class="stat">
@@ -423,6 +450,25 @@
             ]
         };
 
+        // Friendly names for activity types
+        const ACTIVITY_TYPE_NAMES = {
+            'Walk': 'Walking',
+            'Run': 'Running',
+            'Ride': 'Cycling',
+            'AlpineSki': 'Skiing',
+            'NordicSki': 'Nordic Skiing',
+            'Workout': 'Workouts',
+            'WeightTraining': 'Weight Training',
+            'Hike': 'Hiking',
+            'Swim': 'Swimming',
+            'Yoga': 'Yoga',
+            'VirtualRide': 'Virtual Cycling',
+            'VirtualRun': 'Virtual Running',
+            'Rowing': 'Rowing',
+            'Elliptical': 'Elliptical',
+            'Crossfit': 'CrossFit'
+        };
+
         // Fetch Strava data from local JSON file
         async function fetchStravaData() {
             try {
@@ -437,47 +483,107 @@
         }
 
         function displayStravaData(activities) {
+            // Filter to last 7 days
+            const sevenDaysAgo = new Date();
+            sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+            const recentActivities = activities.filter(activity => {
+                const activityDate = new Date(activity.start_date);
+                return activityDate >= sevenDaysAgo;
+            });
+
+            // Calculate totals for the 7-day period
             let totalDistance = 0;
             let totalTime = 0;
 
-            activities.forEach(activity => {
+            recentActivities.forEach(activity => {
                 totalDistance += activity.distance || 0;
                 totalTime += activity.moving_time || 0;
             });
 
+            // Update stats
             document.getElementById('total-distance').textContent = Math.round(totalDistance / 1609.34);
-            document.getElementById('total-activities').textContent = activities.length;
+            document.getElementById('total-activities').textContent = recentActivities.length;
             document.getElementById('total-time').textContent = Math.round(totalTime / 3600);
 
-            const recent = activities.slice(0, 5);
-            const activitiesHtml = recent.map(activity => {
-                const name = activity.name || 'Activity';
-                const type = activity.type || '';
-                const distanceMiles = (activity.distance / 1609.34).toFixed(1);
-                const minutes = Math.round(activity.moving_time / 60);
-                const avgHR = activity.average_heartrate ? Math.round(activity.average_heartrate) : null;
-                const date = activity.start_date || '';
-                const formattedDate = date ? new Date(date).toLocaleDateString() : '';
+            // Group activities by type
+            const groupedByType = {};
+            recentActivities.forEach(activity => {
+                const type = activity.type || 'Other';
+                if (!groupedByType[type]) {
+                    groupedByType[type] = [];
+                }
+                groupedByType[type].push(activity);
+            });
 
-                const hours = Math.floor(minutes / 60);
-                const mins = minutes % 60;
-                const duration = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+            // Sort types by total time (most active first)
+            const sortedTypes = Object.keys(groupedByType).sort((a, b) => {
+                const timeA = groupedByType[a].reduce((sum, act) => sum + (act.moving_time || 0), 0);
+                const timeB = groupedByType[b].reduce((sum, act) => sum + (act.moving_time || 0), 0);
+                return timeB - timeA;
+            });
 
-                return `
-                    <div class="activity">
-                        <div class="activity-name">${name}</div>
-                        <div class="activity-meta">
-                            <span>${type}</span>
-                            ${activity.distance > 0 ? `<span>${distanceMiles} mi</span>` : ''}
-                            <span>${duration}</span>
-                            ${avgHR ? `<span>${avgHR} bpm</span>` : ''}
-                            <span>${formattedDate}</span>
+            // Build HTML grouped by type
+            let html = '';
+
+            sortedTypes.forEach(type => {
+                const typeActivities = groupedByType[type];
+                const typeName = ACTIVITY_TYPE_NAMES[type] || type;
+
+                // Calculate type totals
+                const typeDistance = typeActivities.reduce((sum, act) => sum + (act.distance || 0), 0);
+                const typeTime = typeActivities.reduce((sum, act) => sum + (act.moving_time || 0), 0);
+                const typeHours = Math.floor(typeTime / 3600);
+                const typeMinutes = Math.round((typeTime % 3600) / 60);
+                const typeMiles = (typeDistance / 1609.34).toFixed(1);
+
+                // Summary text
+                let summaryParts = [];
+                if (typeDistance > 0) summaryParts.push(`${typeMiles} mi`);
+                if (typeHours > 0) {
+                    summaryParts.push(`${typeHours}h ${typeMinutes}m`);
+                } else {
+                    summaryParts.push(`${typeMinutes}m`);
+                }
+
+                html += `<div class="activity-type-group">`;
+                html += `<div class="activity-type-header">
+                    <span>${typeName} (${typeActivities.length})</span>
+                    <span class="activity-type-summary">${summaryParts.join(' · ')}</span>
+                </div>`;
+
+                // Sort activities within type by date (newest first)
+                typeActivities.sort((a, b) => new Date(b.start_date) - new Date(a.start_date));
+
+                typeActivities.forEach(activity => {
+                    const name = activity.name || 'Activity';
+                    const distanceMiles = (activity.distance / 1609.34).toFixed(1);
+                    const minutes = Math.round(activity.moving_time / 60);
+                    const avgHR = activity.average_heartrate ? Math.round(activity.average_heartrate) : null;
+                    const date = activity.start_date || '';
+                    const formattedDate = date ? new Date(date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }) : '';
+
+                    const hours = Math.floor(minutes / 60);
+                    const mins = minutes % 60;
+                    const duration = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+
+                    html += `
+                        <div class="activity">
+                            <div class="activity-name">${name}</div>
+                            <div class="activity-meta">
+                                ${activity.distance > 0 ? `<span>${distanceMiles} mi</span>` : ''}
+                                <span>${duration}</span>
+                                ${avgHR ? `<span>${avgHR} bpm</span>` : ''}
+                                <span>${formattedDate}</span>
+                            </div>
                         </div>
-                    </div>
-                `;
-            }).join('');
+                    `;
+                });
 
-            document.getElementById('strava-activities').innerHTML = activitiesHtml || '<p>No recent activities</p>';
+                html += `</div>`;
+            });
+
+            document.getElementById('strava-activities').innerHTML = html || '<p>No activities in the last 7 days</p>';
         }
 
         // Fetch AI News from today.json
@@ -508,7 +614,6 @@
                 return;
             }
 
-            // Show up to 5 articles
             const articles = data.articles.slice(0, 5);
             const articlesHtml = articles.map(article => `
                 <div class="news-article">
