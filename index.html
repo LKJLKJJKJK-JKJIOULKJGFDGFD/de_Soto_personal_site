@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>de Soto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border: 1px solid #e5e5e5;
+        }
+
+        .card h2 {
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #888;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h2 svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .card h2 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .card h2 a:hover {
+            color: #666;
+        }
+
+        /* Strava Section */
+        .strava-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fc4c02;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .activity {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .activity:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .activity-name {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-meta {
+            font-size: 0.875rem;
+            color: #666;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* AI News Section */
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .news-date {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .news-article {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .news-article:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .news-article a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            line-height: 1.4;
+        }
+
+        .news-article a:hover {
+            color: #0066cc;
+        }
+
+        .news-source {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 0.25rem;
+        }
+
+        .view-all {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #f0f0f0;
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .view-all:hover {
+            text-decoration: underline;
+        }
+
+        /* Weather Section */
+        .weather-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .weather-city {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .weather-city-name {
+            font-weight: 500;
+        }
+
+        .weather-temp {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .weather-desc {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        /* Links Section */
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s;
+        }
+
+        .link-item:hover {
+            background: #f0f0f0;
+        }
+
+        .link-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e5e5e5;
+        }
+
+        .link-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .link-text h3 {
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+
+        .link-text p {
+            font-size: 0.8125rem;
+            color: #888;
+        }
+
+        /* Loading State */
+        .loading {
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Error State */
+        .error {
+            color: #dc3545;
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+            color: #888;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem;
+            }
+
+            .strava-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+
+            .stat-value {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>de Soto</h1>
+        <p>A few things I'm keeping track of</p>
+    </header>
+
+    <div class="grid">
+        <!-- Strava Card -->
+        <div class="card">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                Strava
+            </h2>
+            <div class="strava-stats" id="strava-stats">
+                <div class="stat">
+                    <div class="stat-value" id="total-distance">--</div>
+                    <div class="stat-label">Miles</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="total-activities">--</div>
+                    <div class="stat-label">Activities</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="total-time">--</div>
+                    <div class="stat-label">Hours</div>
+                </div>
+            </div>
+            <div id="strava-activities">
+                <p class="loading">Loading activities...</p>
+            </div>
+        </div>
+
+        <!-- AI News Card -->
+        <div class="card">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+                <a href="https://lkjlkjjkjk-jkjioulkjgfdgfd.github.io/ai-news-digest/" target="_blank" rel="noopener">AI News</a>
+            </h2>
+            <div id="ai-news-container">
+                <p class="loading">Loading today's AI news...</p>
+            </div>
+        </div>
+
+        <!-- Weather Card -->
+        <div class="card">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+                Weather
+            </h2>
+            <div class="weather-grid" id="weather-container">
+                <p class="loading">Loading weather...</p>
+            </div>
+        </div>
+
+        <!-- Links Card -->
+        <div class="card">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                </svg>
+                Links
+            </h2>
+            <div class="links-list">
+                <a href="https://www.linkedin.com/in/bdesoto/" class="link-item" target="_blank" rel="noopener">
+                    <div class="link-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </div>
+                    <div class="link-text">
+                        <h3>LinkedIn</h3>
+                        <p>Professional profile</p>
+                    </div>
+                </a>
+                <a href="https://github.com/LKJLKJJKJK-JKJIOULKJGFDGFD" class="link-item" target="_blank" rel="noopener">
+                    <div class="link-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </div>
+                    <div class="link-text">
+                        <h3>GitHub</h3>
+                        <p>Code and projects</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Last updated: <span id="last-updated"></span></p>
+    </footer>
+
+    <script>
+        // Configuration
+        const CONFIG = {
+            aiNewsUrl: 'https://lkjlkjjkjk-jkjioulkjgfdgfd.github.io/ai-news-digest/today.json',
+            aiNewsArchive: 'https://lkjlkjjkjk-jkjioulkjgfdgfd.github.io/ai-news-digest/',
+            cities: [
+                { name: 'Cincinnati', lat: 39.1031, lon: -84.5120 },
+                { name: 'New York', lat: 40.7128, lon: -74.0060 },
+                { name: 'Olympia, WA', lat: 47.0379, lon: -122.9007 }
+            ]
+        };
+
+        // Fetch Strava data from local JSON file
+        async function fetchStravaData() {
+            try {
+                const response = await fetch('data/strava.json');
+                const activities = await response.json();
+                displayStravaData(activities);
+            } catch (error) {
+                console.error('Error fetching Strava data:', error);
+                document.getElementById('strava-activities').innerHTML =
+                    '<p class="error">Unable to load Strava data.</p>';
+            }
+        }
+
+        function displayStravaData(activities) {
+            let totalDistance = 0;
+            let totalTime = 0;
+
+            activities.forEach(activity => {
+                totalDistance += activity.distance || 0;
+                totalTime += activity.moving_time || 0;
+            });
+
+            document.getElementById('total-distance').textContent = Math.round(totalDistance / 1609.34);
+            document.getElementById('total-activities').textContent = activities.length;
+            document.getElementById('total-time').textContent = Math.round(totalTime / 3600);
+
+            const recent = activities.slice(0, 5);
+            const activitiesHtml = recent.map(activity => {
+                const name = activity.name || 'Activity';
+                const type = activity.type || '';
+                const distanceMiles = (activity.distance / 1609.34).toFixed(1);
+                const minutes = Math.round(activity.moving_time / 60);
+                const avgHR = activity.average_heartrate ? Math.round(activity.average_heartrate) : null;
+                const date = activity.start_date || '';
+                const formattedDate = date ? new Date(date).toLocaleDateString() : '';
+
+                const hours = Math.floor(minutes / 60);
+                const mins = minutes % 60;
+                const duration = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+
+                return `
+                    <div class="activity">
+                        <div class="activity-name">${name}</div>
+                        <div class="activity-meta">
+                            <span>${type}</span>
+                            ${activity.distance > 0 ? `<span>${distanceMiles} mi</span>` : ''}
+                            <span>${duration}</span>
+                            ${avgHR ? `<span>${avgHR} bpm</span>` : ''}
+                            <span>${formattedDate}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('strava-activities').innerHTML = activitiesHtml || '<p>No recent activities</p>';
+        }
+
+        // Fetch AI News from today.json
+        async function fetchAINews() {
+            const container = document.getElementById('ai-news-container');
+
+            try {
+                const response = await fetch(CONFIG.aiNewsUrl);
+                const data = await response.json();
+                displayAINews(data);
+            } catch (error) {
+                console.error('Error fetching AI news:', error);
+                container.innerHTML = `
+                    <p class="error">Unable to load today's news.</p>
+                    <a href="${CONFIG.aiNewsArchive}" class="view-all" target="_blank">View archive →</a>
+                `;
+            }
+        }
+
+        function displayAINews(data) {
+            const container = document.getElementById('ai-news-container');
+
+            if (!data.articles || data.articles.length === 0) {
+                container.innerHTML = `
+                    <p>No articles yet today.</p>
+                    <a href="${CONFIG.aiNewsArchive}" class="view-all" target="_blank">View archive →</a>
+                `;
+                return;
+            }
+
+            // Show up to 5 articles
+            const articles = data.articles.slice(0, 5);
+            const articlesHtml = articles.map(article => `
+                <div class="news-article">
+                    <a href="${article.link}" target="_blank" rel="noopener">${article.title}</a>
+                    <div class="news-source">${article.source}</div>
+                </div>
+            `).join('');
+
+            const moreCount = data.count > 5 ? data.count - 5 : 0;
+            const viewAllText = moreCount > 0 ? `View all ${data.count} articles →` : 'View full archive →';
+
+            container.innerHTML = `
+                <div class="news-header">
+                    <span class="news-date">${data.date}</span>
+                    <span class="news-date">${data.count} articles</span>
+                </div>
+                ${articlesHtml}
+                <a href="${CONFIG.aiNewsArchive}" class="view-all" target="_blank">${viewAllText}</a>
+            `;
+        }
+
+        // Fetch weather data using Open-Meteo
+        async function fetchWeather() {
+            const container = document.getElementById('weather-container');
+
+            try {
+                const weatherPromises = CONFIG.cities.map(async city => {
+                    const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weather_code&temperature_unit=fahrenheit`;
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    return { ...city, weather: data };
+                });
+
+                const results = await Promise.all(weatherPromises);
+
+                const weatherHtml = results.map(city => {
+                    const temp = Math.round(city.weather.current.temperature_2m);
+                    const weatherCode = city.weather.current.weather_code;
+                    const desc = getWeatherDescription(weatherCode);
+
+                    return `
+                        <div class="weather-city">
+                            <div>
+                                <div class="weather-city-name">${city.name}</div>
+                                <div class="weather-desc">${desc}</div>
+                            </div>
+                            <div class="weather-temp">${temp}°F</div>
+                        </div>
+                    `;
+                }).join('');
+
+                container.innerHTML = weatherHtml;
+            } catch (error) {
+                console.error('Error fetching weather:', error);
+                container.innerHTML = '<p class="error">Unable to load weather data.</p>';
+            }
+        }
+
+        function getWeatherDescription(code) {
+            const descriptions = {
+                0: 'Clear sky',
+                1: 'Mainly clear',
+                2: 'Partly cloudy',
+                3: 'Overcast',
+                45: 'Foggy',
+                48: 'Depositing rime fog',
+                51: 'Light drizzle',
+                53: 'Moderate drizzle',
+                55: 'Dense drizzle',
+                61: 'Slight rain',
+                63: 'Moderate rain',
+                65: 'Heavy rain',
+                71: 'Slight snow',
+                73: 'Moderate snow',
+                75: 'Heavy snow',
+                80: 'Slight rain showers',
+                81: 'Moderate rain showers',
+                82: 'Violent rain showers',
+                95: 'Thunderstorm'
+            };
+            return descriptions[code] || 'Unknown';
+        }
+
+        function updateTimestamp() {
+            document.getElementById('last-updated').textContent = new Date().toLocaleString();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchStravaData();
+            fetchAINews();
+            fetchWeather();
+            updateTimestamp();
+        });
+    </script>
+</body>
+</html>
