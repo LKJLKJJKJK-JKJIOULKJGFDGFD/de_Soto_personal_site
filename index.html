@@ -231,6 +231,13 @@
             padding: 0.75rem;
             background: #f9f9f9;
             border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s;
+        }
+
+        .weather-city:hover {
+            background: #f0f0f0;
         }
 
         .weather-city-name {
@@ -653,15 +660,16 @@
                     const temp = Math.round(city.weather.current.temperature_2m);
                     const weatherCode = city.weather.current.weather_code;
                     const desc = getWeatherDescription(weatherCode);
+                    const forecastUrl = `https://open-meteo.com/en/docs#latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weather_code&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=auto`;
 
                     return `
-                        <div class="weather-city">
+                        <a href="${forecastUrl}" class="weather-city" target="_blank" rel="noopener">
                             <div>
                                 <div class="weather-city-name">${city.name}</div>
                                 <div class="weather-desc">${desc}</div>
                             </div>
                             <div class="weather-temp">${temp}°F</div>
-                        </div>
+                        </a>
                     `;
                 }).join('');
 
