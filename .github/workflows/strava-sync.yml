@@ -2,8 +2,8 @@ name: Sync Strava Data
 
 on:
   schedule:
-    # Run daily at 6am UTC (1am EST / 10pm PST)
-    - cron: '0 6 * * *'
+    # Run every hour
+    - cron: '0 * * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
