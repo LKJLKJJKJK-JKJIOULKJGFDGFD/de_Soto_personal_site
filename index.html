@@ -660,7 +660,7 @@
                     const temp = Math.round(city.weather.current.temperature_2m);
                     const weatherCode = city.weather.current.weather_code;
                     const desc = getWeatherDescription(weatherCode);
-                    const forecastUrl = `https://wttr.in/${encodeURIComponent(city.name)}?u`;
+                    const forecastUrl = `https://forecast.weather.gov/MapClick.php?lat=${city.lat}&lon=${city.lon}`;
 
                     return `
                         <a href="${forecastUrl}" class="weather-city" target="_blank" rel="noopener">
