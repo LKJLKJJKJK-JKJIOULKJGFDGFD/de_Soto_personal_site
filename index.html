@@ -6,8 +6,21 @@
     <title>de Soto</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --forest-green: #2d5a3d;
+            --forest-green-light: #3d7a52;
+            --orange: #e07b39;
+            --orange-light: #f0a060;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5a5a5a;
+            --text-muted: #888;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --border-light: #eaeaea;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,95 +28,150 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #fafafa;
-            color: #1a1a1a;
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
-            padding: 2rem;
-            max-width: 1200px;
+            padding: 3rem 2rem;
+            max-width: 900px;
             margin: 0 auto;
         }
 
+        /* Header with Profile */
         header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
             margin-bottom: 3rem;
             padding-bottom: 2rem;
-            border-bottom: 1px solid #e5e5e5;
+            border-bottom: 1px solid var(--border-light);
         }
 
-        header h1 {
-            font-size: 2rem;
+        .profile-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--forest-green), var(--forest-green-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            flex-shrink: 0;
+            overflow: hidden;
         }
 
-        header p {
-            color: #666;
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-text h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .header-text p {
+            color: var(--text-secondary);
             font-size: 1rem;
+            font-weight: 400;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
         }
 
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            border: 1px solid #e5e5e5;
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
         }
 
-        .card h2 {
-            font-size: 0.875rem;
-            font-weight: 500;
+        .social-links a:hover {
+            background: var(--forest-green);
+            color: white;
+        }
+
+        .social-links svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 0.8125rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #888;
+            letter-spacing: 0.08em;
+            color: var(--forest-green);
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .card h2 svg {
-            width: 18px;
-            height: 18px;
+        .section-title svg {
+            width: 16px;
+            height: 16px;
         }
 
-        .card h2 a {
+        .section-title a {
             color: inherit;
             text-decoration: none;
         }
 
-        .card h2 a:hover {
-            color: #666;
+        .section-title a:hover {
+            color: var(--forest-green-light);
+        }
+
+        /* Cards */
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid var(--border-light);
         }
 
         /* Strava Section */
         .strava-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-light);
         }
 
         .stat {
-            text-align: center;
+            text-align: left;
         }
 
         .stat-value {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 600;
-            color: #fc4c02;
+            color: var(--orange);
+            line-height: 1.2;
         }
 
         .stat-label {
             font-size: 0.75rem;
-            color: #888;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
@@ -117,12 +185,12 @@
         }
 
         .activity-type-header {
-            font-size: 0.8125rem;
+            font-size: 0.875rem;
             font-weight: 600;
-            color: #fc4c02;
+            color: var(--forest-green);
             margin-bottom: 0.5rem;
-            padding-bottom: 0.25rem;
-            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 0.375rem;
+            border-bottom: 1px solid var(--border-light);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -130,29 +198,28 @@
 
         .activity-type-summary {
             font-weight: 400;
-            color: #888;
-            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.8125rem;
         }
 
         .activity {
             padding: 0.5rem 0;
-            border-bottom: 1px solid #f5f5f5;
         }
 
         .activity:last-child {
-            border-bottom: none;
             padding-bottom: 0;
         }
 
         .activity-name {
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.9375rem;
+            color: var(--text-primary);
             margin-bottom: 0.125rem;
         }
 
         .activity-meta {
             font-size: 0.8125rem;
-            color: #666;
+            color: var(--text-secondary);
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
@@ -163,150 +230,111 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             padding-bottom: 0.75rem;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid var(--border-light);
         }
 
         .news-date {
-            font-size: 0.875rem;
-            color: #666;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
         }
 
         .news-article {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid #f5f5f5;
+            padding: 0.625rem 0;
         }
 
         .news-article:last-child {
-            border-bottom: none;
             padding-bottom: 0;
         }
 
         .news-article a {
-            color: #1a1a1a;
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9375rem;
             line-height: 1.4;
+            transition: color 0.2s;
         }
 
         .news-article a:hover {
-            color: #0066cc;
+            color: var(--forest-green);
         }
 
         .news-source {
             font-size: 0.75rem;
-            color: #888;
+            color: var(--text-muted);
             margin-top: 0.25rem;
         }
 
         .view-all {
-            display: block;
-            text-align: center;
+            display: inline-block;
             margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #f0f0f0;
-            color: #0066cc;
+            color: var(--forest-green);
             text-decoration: none;
             font-size: 0.875rem;
             font-weight: 500;
+            transition: color 0.2s;
         }
 
         .view-all:hover {
-            text-decoration: underline;
+            color: var(--forest-green-light);
         }
 
         /* Weather Section */
         .weather-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
         }
 
         .weather-city {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem;
-            background: #f9f9f9;
-            border-radius: 8px;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
             text-decoration: none;
             color: inherit;
-            transition: background 0.2s;
+            transition: all 0.2s ease;
         }
 
         .weather-city:hover {
-            background: #f0f0f0;
+            background: var(--forest-green);
+            color: white;
+        }
+
+        .weather-city:hover .weather-desc {
+            color: rgba(255,255,255,0.8);
         }
 
         .weather-city-name {
             font-weight: 500;
+            font-size: 0.9375rem;
         }
 
         .weather-temp {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 600;
+            color: var(--orange);
+        }
+
+        .weather-city:hover .weather-temp {
+            color: white;
         }
 
         .weather-desc {
-            font-size: 0.875rem;
-            color: #666;
-        }
-
-        /* Links Section */
-        .links-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .link-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            background: #f9f9f9;
-            border-radius: 8px;
-            text-decoration: none;
-            color: inherit;
-            transition: background 0.2s;
-        }
-
-        .link-item:hover {
-            background: #f0f0f0;
-        }
-
-        .link-icon {
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #e5e5e5;
-        }
-
-        .link-icon svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .link-text h3 {
-            font-size: 0.9375rem;
-            font-weight: 500;
-        }
-
-        .link-text p {
             font-size: 0.8125rem;
-            color: #888;
+            color: var(--text-secondary);
+            margin-top: 0.125rem;
         }
 
         /* Loading State */
         .loading {
-            color: #888;
+            color: var(--text-muted);
             font-style: italic;
+            font-size: 0.875rem;
         }
 
         /* Error State */
@@ -318,44 +346,73 @@
         /* Footer */
         footer {
             margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e5e5e5;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
             text-align: center;
-            color: #888;
-            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-size: 0.8125rem;
         }
 
         @media (max-width: 640px) {
             body {
-                padding: 1rem;
+                padding: 1.5rem 1rem;
+            }
+
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
             }
 
             .strava-stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.5rem;
+                gap: 1.5rem;
             }
 
             .stat-value {
-                font-size: 1.25rem;
+                font-size: 1.5rem;
+            }
+
+            .weather-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>de Soto</h1>
-        <p>A few things I'm keeping track of</p>
+        <div class="profile-photo" id="profile-photo">dS</div>
+        <div class="header-text">
+            <h1>de Soto</h1>
+            <p>A few things I'm keeping track of</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/bdesoto/" target="_blank" rel="noopener" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/LKJLKJJKJK-JKJIOULKJGFDGFD" target="_blank" rel="noopener" title="GitHub">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </header>
 
-    <div class="grid">
-        <!-- Strava Card -->
+    <!-- Strava Section -->
+    <section>
+        <div class="section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+            Activity · Last 7 Days
+        </div>
         <div class="card">
-            <h2>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                </svg>
-                Strava <span style="font-weight: 400; text-transform: none; margin-left: 0.25rem;">(last 7 days)</span>
-            </h2>
             <div class="strava-stats" id="strava-stats">
                 <div class="stat">
                     <div class="stat-value" id="total-distance">--</div>
@@ -374,72 +431,37 @@
                 <p class="loading">Loading activities...</p>
             </div>
         </div>
+    </section>
 
-        <!-- AI News Card -->
+    <!-- AI News Section -->
+    <section>
+        <div class="section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+            <a href="https://lkjlkjjkjk-jkjioulkjgfdgfd.github.io/ai-news-digest/" target="_blank" rel="noopener">AI News</a>
+        </div>
         <div class="card">
-            <h2>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                </svg>
-                <a href="https://lkjlkjjkjk-jkjioulkjgfdgfd.github.io/ai-news-digest/" target="_blank" rel="noopener">AI News</a>
-            </h2>
             <div id="ai-news-container">
                 <p class="loading">Loading today's AI news...</p>
             </div>
         </div>
+    </section>
 
-        <!-- Weather Card -->
-        <div class="card">
-            <h2>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5"/>
-                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                </svg>
-                Weather
-            </h2>
-            <div class="weather-grid" id="weather-container">
-                <p class="loading">Loading weather...</p>
-            </div>
+    <!-- Weather Section -->
+    <section>
+        <div class="section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+            Weather
         </div>
-
-        <!-- Links Card -->
-        <div class="card">
-            <h2>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                </svg>
-                Links
-            </h2>
-            <div class="links-list">
-                <a href="https://www.linkedin.com/in/bdesoto/" class="link-item" target="_blank" rel="noopener">
-                    <div class="link-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/>
-                            <circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </div>
-                    <div class="link-text">
-                        <h3>My LinkedIn Profile</h3>
-                        <p>Professional profile</p>
-                    </div>
-                </a>
-                <a href="https://github.com/LKJLKJJKJK-JKJIOULKJGFDGFD" class="link-item" target="_blank" rel="noopener">
-                    <div class="link-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                        </svg>
-                    </div>
-                    <div class="link-text">
-                        <h3>GitHub</h3>
-                        <p>Code and projects</p>
-                    </div>
-                </a>
-            </div>
+        <div class="weather-grid" id="weather-container">
+            <p class="loading">Loading weather...</p>
         </div>
-    </div>
+    </section>
 
     <footer>
         <p>Last updated: <span id="last-updated"></span></p>
@@ -668,7 +690,7 @@
                                 <div class="weather-city-name">${city.name}</div>
                                 <div class="weather-desc">${desc}</div>
                             </div>
-                            <div class="weather-temp">${temp}°F</div>
+                            <div class="weather-temp">${temp}°</div>
                         </a>
                     `;
                 }).join('');
