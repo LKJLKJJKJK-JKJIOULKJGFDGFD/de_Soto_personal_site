@@ -1,5 +1,15 @@
 [
   {
+    "name": "Queen City Kettlebell",
+    "type": "Workout",
+    "distance": 0.0,
+    "moving_time": 2373,
+    "start_date": "2026-02-02T07:08:44Z",
+    "average_heartrate": 115.6,
+    "max_heartrate": 144.0,
+    "total_elevation_gain": 0
+  },
+  {
     "name": "Hot yoga",
     "type": "Yoga",
     "distance": 0.0,
@@ -7,6 +17,16 @@
     "start_date": "2026-02-01T08:00:54Z",
     "average_heartrate": null,
     "max_heartrate": null,
+    "total_elevation_gain": 0
+  },
+  {
+    "name": "Morning Yoga",
+    "type": "Yoga",
+    "distance": 0.0,
+    "moving_time": 5614,
+    "start_date": "2026-02-01T07:53:14Z",
+    "average_heartrate": 97.6,
+    "max_heartrate": 135.0,
     "total_elevation_gain": 0
   },
   {
@@ -477,26 +497,6 @@
     "start_date": "2026-01-01T08:55:23Z",
     "average_heartrate": 126.9,
     "max_heartrate": 155.0,
-    "total_elevation_gain": 0
-  },
-  {
-    "name": "Morning Walk",
-    "type": "Walk",
-    "distance": 1547.7,
-    "moving_time": 1279,
-    "start_date": "2026-01-01T07:42:41Z",
-    "average_heartrate": 74.8,
-    "max_heartrate": 92.0,
-    "total_elevation_gain": 17.0
-  },
-  {
-    "name": "Morning Workout",
-    "type": "Workout",
-    "distance": 0.0,
-    "moving_time": 2909,
-    "start_date": "2025-12-31T07:04:32Z",
-    "average_heartrate": 110.2,
-    "max_heartrate": 132.0,
     "total_elevation_gain": 0
   }
 ]
