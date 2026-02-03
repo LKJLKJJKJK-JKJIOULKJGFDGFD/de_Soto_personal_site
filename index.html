@@ -126,12 +126,17 @@
             background: linear-gradient(135deg, var(--orange), var(--orange-light));
         }
 
-        .profile-coin-front img,
+        .profile-coin-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .profile-coin-back img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center 15%;
         }
 
         .header-text h1 {
