@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcasts - de Soto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-green: #2d5a3d;
+            --forest-green-light: #3d7a52;
+            --orange: #e07b39;
+            --spotify-green: #1DB954;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5a5a5a;
+            --text-muted: #888;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --border-light: #eaeaea;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 3rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--forest-green);
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .page-title svg {
+            width: 32px;
+            height: 32px;
+            color: var(--spotify-green);
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .episode-count {
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+            margin-top: 0.25rem;
+        }
+
+        .episodes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .episode {
+            display: block;
+            padding: 1rem 1.25rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .episode:hover {
+            background: var(--spotify-green);
+            transform: translateX(4px);
+        }
+
+        .episode:hover .episode-title,
+        .episode:hover .episode-podcast {
+            color: white;
+        }
+
+        .episode-title {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .episode-podcast {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .loading {
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .error {
+            color: #dc3545;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to home
+        </a>
+        <div class="page-title">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+            <h1>Podcasts</h1>
+        </div>
+        <p class="episode-count"><span id="count">--</span> episodes saved</p>
+    </header>
+
+    <div class="episodes-list" id="episodes-container">
+        <p class="loading">Loading episodes...</p>
+    </div>
+
+    <script>
+        async function loadPodcasts() {
+            const container = document.getElementById('episodes-container');
+            const countEl = document.getElementById('count');
+
+            try {
+                const response = await fetch('data/podcasts.json');
+                const podcasts = await response.json();
+
+                countEl.textContent = podcasts.length;
+
+                if (!podcasts || podcasts.length === 0) {
+                    container.innerHTML = '<p class="loading">No episodes saved yet.</p>';
+                    return;
+                }
+
+                // Sort by date_added (newest first)
+                podcasts.sort((a, b) => new Date(b.date_added) - new Date(a.date_added));
+
+                const html = podcasts.map(episode => `
+                    <a href="${episode.url}" target="_blank" rel="noopener" class="episode">
+                        <div class="episode-title">${episode.title}</div>
+                        <div class="episode-podcast">${episode.podcast}</div>
+                    </a>
+                `).join('');
+
+                container.innerHTML = html;
+            } catch (error) {
+                console.error('Error loading podcasts:', error);
+                countEl.textContent = '0';
+                container.innerHTML = '<p class="error">Unable to load episodes.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPodcasts);
+    </script>
+</body>
+</html>

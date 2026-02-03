@@ -465,6 +465,10 @@
             text-decoration: underline;
         }
 
+        .podcasts-back .view-all {
+            color: var(--spotify-green);
+        }
+
         /* Hover hint */
         .hover-hint {
             position: absolute;
@@ -968,7 +972,11 @@
                 </div>
             `).join('');
 
-            container.innerHTML = episodesHtml;
+            const viewAllText = podcasts.length > 5 ? `View all ${podcasts.length} →` : 'View all →';
+            container.innerHTML = `
+                ${episodesHtml}
+                <a href="podcasts.html" class="view-all">${viewAllText}</a>
+            `;
         }
 
         // Fetch weather data using Open-Meteo
