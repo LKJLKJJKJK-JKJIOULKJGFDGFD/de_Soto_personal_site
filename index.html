@@ -62,11 +62,24 @@
             flex-shrink: 0;
         }
 
+        .header-gallery a {
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .header-gallery a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
         .header-gallery img {
             width: 120px;
             height: 90px;
             border-radius: 8px;
             object-fit: cover;
+            display: block;
         }
 
         .profile-photo {
@@ -627,9 +640,9 @@
             </div>
         </div>
         <div class="header-gallery">
-            <img src="IMG_5569.jpeg" alt="Photo">
-            <img src="bike.jpeg" alt="Bike">
-            <img src="IMG_5591.jpeg" alt="Photo">
+            <a href="IMG_5569.jpeg" target="_blank"><img src="IMG_5569.jpeg" alt="Photo"></a>
+            <a href="bike.jpeg" target="_blank"><img src="bike.jpeg" alt="Bike"></a>
+            <a href="IMG_5591.jpeg" target="_blank"><img src="IMG_5591.jpeg" alt="Photo"></a>
         </div>
     </header>
 
