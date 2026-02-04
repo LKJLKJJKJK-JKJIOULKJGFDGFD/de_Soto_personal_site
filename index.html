@@ -98,10 +98,14 @@
             transform-style: preserve-3d;
         }
 
-        .profile-coin:hover .profile-coin-inner {
-            transform: rotateY(180deg);
+        /* Only apply hover on devices that support hover (not touch) */
+        @media (hover: hover) {
+            .profile-coin:hover .profile-coin-inner {
+                transform: rotateY(180deg);
+            }
         }
 
+        /* Flipped state for tap/click toggle */
         .profile-coin.flipped .profile-coin-inner {
             transform: rotateY(180deg);
         }
