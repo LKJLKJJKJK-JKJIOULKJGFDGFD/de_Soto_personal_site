@@ -11,6 +11,8 @@
         :root {
             --forest-green: #2d5a3d;
             --forest-green-light: #3d7a52;
+            --forest-green-faded: #e8f0eb;
+            --forest-green-soft: #d4e4da;
             --orange: #e07b39;
             --orange-light: #f0a060;
             --strava-orange: #fc4c02;
@@ -31,12 +33,24 @@
 
         body {
             font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-primary);
+            background: linear-gradient(135deg, var(--forest-green-faded) 0%, var(--forest-green-soft) 50%, var(--forest-green-faded) 100%);
+            min-height: 100vh;
             color: var(--text-primary);
             line-height: 1.6;
-            padding: 3rem 2rem;
+            padding: 2rem;
+        }
+
+        .main-container {
             max-width: 900px;
             margin: 0 auto;
+        }
+
+        .content-card {
+            background: var(--bg-primary);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 12px rgba(45, 90, 61, 0.08);
         }
 
         /* Header with Profile */
@@ -44,9 +58,6 @@
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border-light);
         }
 
         .header-left {
@@ -189,7 +200,6 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
-            margin-bottom: 2.5rem;
         }
 
         /* Flip Card Container */
@@ -614,7 +624,7 @@
 
         /* Weather Section */
         section {
-            margin-bottom: 2.5rem;
+            /* Section styling handled by content-card wrapper */
         }
 
         .weather-grid {
@@ -680,22 +690,35 @@
 
         /* Footer */
         footer {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-light);
             text-align: center;
             color: var(--text-muted);
             font-size: 0.8125rem;
+            padding: 1rem 0;
         }
 
         @media (max-width: 640px) {
             body {
-                padding: 1.5rem 1rem;
+                padding: 1rem;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+                border-radius: 16px;
             }
 
             header {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .header-left {
+                flex-direction: column;
+            }
+
+            .header-gallery {
+                margin-left: 0;
+                margin-top: 1rem;
+                justify-content: center;
             }
 
             .social-links {
@@ -717,46 +740,51 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-left">
-            <div class="profile-coin" id="profile-coin">
-                <div class="profile-coin-inner">
-                    <div class="profile-coin-front">
-                        <img src="profile.png" alt="de Soto cartoon">
+    <div class="main-container">
+        <!-- Header Card -->
+        <div class="content-card">
+            <header>
+                <div class="header-left">
+                    <div class="profile-coin" id="profile-coin">
+                        <div class="profile-coin-inner">
+                            <div class="profile-coin-front">
+                                <img src="profile.png" alt="de Soto cartoon">
+                            </div>
+                            <div class="profile-coin-back">
+                                <img src="profile-real.png" alt="de Soto">
+                            </div>
+                        </div>
                     </div>
-                    <div class="profile-coin-back">
-                        <img src="profile-real.png" alt="de Soto">
+                    <div class="header-text">
+                        <h1>de Soto</h1>
+                        <p>A few things I'm keeping track of</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/bdesoto/" target="_blank" rel="noopener" title="LinkedIn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                    <rect x="2" y="9" width="4" height="12"/>
+                                    <circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/LKJLKJJKJK-JKJIOULKJGFDGFD" target="_blank" rel="noopener" title="GitHub">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="header-text">
-                <h1>de Soto</h1>
-                <p>A few things I'm keeping track of</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/bdesoto/" target="_blank" rel="noopener" title="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/>
-                            <circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </a>
-                    <a href="https://github.com/LKJLKJJKJK-JKJIOULKJGFDGFD" target="_blank" rel="noopener" title="GitHub">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                        </svg>
-                    </a>
+                <div class="header-gallery">
+                    <a href="IMG_5569.jpeg" target="_blank"><img src="IMG_5569.jpeg" alt="Photo"></a>
+                    <a href="bike.jpeg" target="_blank"><img src="bike.jpeg" alt="Bike"></a>
+                    <a href="IMG_5591.jpeg" target="_blank"><img src="IMG_5591.jpeg" alt="Photo"></a>
                 </div>
-            </div>
+            </header>
         </div>
-        <div class="header-gallery">
-            <a href="IMG_5569.jpeg" target="_blank"><img src="IMG_5569.jpeg" alt="Photo"></a>
-            <a href="bike.jpeg" target="_blank"><img src="bike.jpeg" alt="Bike"></a>
-            <a href="IMG_5591.jpeg" target="_blank"><img src="IMG_5591.jpeg" alt="Photo"></a>
-        </div>
-    </header>
 
-    <!-- Flip Card Tiles -->
-    <div class="tiles-grid">
+        <!-- Tiles Card -->
+        <div class="content-card">
+            <div class="tiles-grid">
         <!-- Strava Flip Card -->
         <div class="flip-card">
             <div class="flip-card-inner">
@@ -866,12 +894,13 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Weather Section (unchanged) -->
-    <section>
+        <!-- Weather Card -->
+        <div class="content-card">
+            <section>
         <div class="section-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="5"/>
@@ -881,12 +910,14 @@
         </div>
         <div class="weather-grid" id="weather-container">
             <p class="loading">Loading weather...</p>
+            </div>
+        </section>
         </div>
-    </section>
 
-    <footer>
-        <p>Last updated: <span id="last-updated"></span></p>
-    </footer>
+            <footer>
+            <p>Last updated: <span id="last-updated"></span></p>
+        </footer>
+    </div>
 
     <script>
         // Configuration
