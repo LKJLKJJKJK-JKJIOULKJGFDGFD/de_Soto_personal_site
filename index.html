@@ -11,8 +11,8 @@
         :root {
             --forest-green: #2d5a3d;
             --forest-green-light: #3d7a52;
-            --forest-green-faded: #e8f0eb;
-            --forest-green-soft: #d4e4da;
+            --forest-green-faded: #d0e2d6;
+            --forest-green-soft: #a8cdb5;
             --orange: #e07b39;
             --orange-light: #f0a060;
             --strava-orange: #fc4c02;
@@ -33,7 +33,8 @@
 
         body {
             font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, var(--forest-green-faded) 0%, var(--forest-green-soft) 50%, var(--forest-green-faded) 100%);
+            background: linear-gradient(160deg, var(--forest-green-faded) 0%, var(--forest-green-soft) 40%, var(--forest-green-faded) 70%, var(--forest-green-soft) 100%);
+            background-attachment: fixed;
             min-height: 100vh;
             color: var(--text-primary);
             line-height: 1.6;
@@ -47,10 +48,11 @@
 
         .content-card {
             background: var(--bg-primary);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 2rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 2px 12px rgba(45, 90, 61, 0.08);
+            box-shadow: 0 8px 32px rgba(45, 90, 61, 0.12), 0 2px 8px rgba(45, 90, 61, 0.08);
+            border: 1px solid rgba(45, 90, 61, 0.06);
         }
 
         /* Header with Profile */
@@ -229,6 +231,7 @@
             border-radius: 16px;
             border: 1px solid var(--border-light);
             overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
         }
 
         .flip-card-front {
@@ -637,12 +640,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem;
-            background: var(--bg-secondary);
-            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, #f0f2f0 100%);
+            border-radius: 12px;
             text-decoration: none;
             color: inherit;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
+            border: 1px solid var(--border-light);
         }
 
         .weather-city:hover {
