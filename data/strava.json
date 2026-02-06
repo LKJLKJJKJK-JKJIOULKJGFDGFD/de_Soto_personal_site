@@ -1,5 +1,35 @@
 [
   {
+    "name": "Queen City Kettlebell",
+    "type": "Workout",
+    "distance": 0.0,
+    "moving_time": 3294,
+    "start_date": "2026-02-06T07:07:00Z",
+    "average_heartrate": 121.1,
+    "max_heartrate": 157.0,
+    "total_elevation_gain": 0
+  },
+  {
+    "name": "Row 10k (5k, 4.5k, 500m)",
+    "type": "Rowing",
+    "distance": 10010.0,
+    "moving_time": 2785,
+    "start_date": "2026-02-05T06:28:35Z",
+    "average_heartrate": 132.5,
+    "max_heartrate": 147.0,
+    "total_elevation_gain": 0
+  },
+  {
+    "name": "Queen City Kettlebell",
+    "type": "Workout",
+    "distance": 0.0,
+    "moving_time": 3271,
+    "start_date": "2026-02-04T07:07:13Z",
+    "average_heartrate": 93.6,
+    "max_heartrate": 111.0,
+    "total_elevation_gain": 0
+  },
+  {
     "name": "Morning Ride",
     "type": "Ride",
     "distance": 14777.1,
@@ -467,36 +497,6 @@
     "start_date": "2026-01-03T08:15:06Z",
     "average_heartrate": 128.9,
     "max_heartrate": 143.0,
-    "total_elevation_gain": 0
-  },
-  {
-    "name": "Morning Walk",
-    "type": "Walk",
-    "distance": 1527.2,
-    "moving_time": 1141,
-    "start_date": "2026-01-03T06:52:03Z",
-    "average_heartrate": 80.4,
-    "max_heartrate": 96.0,
-    "total_elevation_gain": 16.7
-  },
-  {
-    "name": "Morning Workout",
-    "type": "Workout",
-    "distance": 0.0,
-    "moving_time": 3718,
-    "start_date": "2026-01-02T07:05:45Z",
-    "average_heartrate": 95.8,
-    "max_heartrate": 131.0,
-    "total_elevation_gain": 0
-  },
-  {
-    "name": "Row 12k (6k, 4k, 2k with 2 fast 500s)",
-    "type": "Rowing",
-    "distance": 12017.0,
-    "moving_time": 3217,
-    "start_date": "2026-01-01T08:55:23Z",
-    "average_heartrate": 126.9,
-    "max_heartrate": 155.0,
     "total_elevation_gain": 0
   }
 ]
