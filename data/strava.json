@@ -1,5 +1,15 @@
 [
   {
+    "name": "Morning Workout",
+    "type": "Workout",
+    "distance": 0.0,
+    "moving_time": 3293,
+    "start_date": "2026-02-13T07:11:45Z",
+    "average_heartrate": 111.2,
+    "max_heartrate": 146.0,
+    "total_elevation_gain": 0
+  },
+  {
     "name": "Morning Walk",
     "type": "Walk",
     "distance": 1539.8,
@@ -488,15 +498,5 @@
     "average_heartrate": 117.4,
     "max_heartrate": 142.0,
     "total_elevation_gain": 0
-  },
-  {
-    "name": "Morning Walk",
-    "type": "Walk",
-    "distance": 1506.2,
-    "moving_time": 1004,
-    "start_date": "2026-01-09T06:08:09Z",
-    "average_heartrate": 89.6,
-    "max_heartrate": 103.0,
-    "total_elevation_gain": 16.7
   }
 ]
