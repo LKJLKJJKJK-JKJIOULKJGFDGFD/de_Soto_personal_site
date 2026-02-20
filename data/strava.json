@@ -1,6 +1,6 @@
 [
   {
-    "name": "Morning Workout",
+    "name": "Queen City Kettlebell",
     "type": "Workout",
     "distance": 0.0,
     "moving_time": 2762,
@@ -20,7 +20,7 @@
     "total_elevation_gain": 16.5
   },
   {
-    "name": "46:04 row",
+    "name": "Row 10k (5x 2k)",
     "type": "Rowing",
     "distance": 10014.0,
     "moving_time": 2765,
@@ -40,7 +40,7 @@
     "total_elevation_gain": 16.5
   },
   {
-    "name": "Morning Workout",
+    "name": "Queen City Kettlebell",
     "type": "Workout",
     "distance": 0.0,
     "moving_time": 2754,
@@ -150,7 +150,7 @@
     "total_elevation_gain": 0
   },
   {
-    "name": "Morning Workout",
+    "name": "Queen City Kettlebell",
     "type": "Workout",
     "distance": 0.0,
     "moving_time": 2101,
@@ -170,7 +170,7 @@
     "total_elevation_gain": 0
   },
   {
-    "name": "Morning Workout",
+    "name": "Queen City Kettlebell",
     "type": "Workout",
     "distance": 0.0,
     "moving_time": 3023,
