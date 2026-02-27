@@ -1,5 +1,15 @@
 [
   {
+    "name": "Morning Workout",
+    "type": "Workout",
+    "distance": 0.0,
+    "moving_time": 3248,
+    "start_date": "2026-02-27T07:08:49Z",
+    "average_heartrate": 110.9,
+    "max_heartrate": 157.0,
+    "total_elevation_gain": 0
+  },
+  {
     "name": "Morning Walk",
     "type": "Walk",
     "distance": 1527.1,
@@ -488,15 +498,5 @@
     "average_heartrate": 134.5,
     "max_heartrate": 147.0,
     "total_elevation_gain": 0
-  },
-  {
-    "name": "Morning Alpine Ski",
-    "type": "AlpineSki",
-    "distance": 39376.9,
-    "moving_time": 9993,
-    "start_date": "2026-01-24T10:00:39Z",
-    "average_heartrate": 88.9,
-    "max_heartrate": 144.0,
-    "total_elevation_gain": 3175.4
   }
 ]
