@@ -1,5 +1,15 @@
 [
   {
+    "name": "Morning Ride",
+    "type": "Ride",
+    "distance": 13884.6,
+    "moving_time": 2673,
+    "start_date": "2026-03-03T06:52:09Z",
+    "average_heartrate": 130.5,
+    "max_heartrate": 143.0,
+    "total_elevation_gain": 0
+  },
+  {
     "name": "Morning Workout",
     "type": "Workout",
     "distance": 0.0,
@@ -487,16 +497,6 @@
     "start_date": "2026-02-04T07:07:13Z",
     "average_heartrate": 93.6,
     "max_heartrate": 111.0,
-    "total_elevation_gain": 0
-  },
-  {
-    "name": "Morning Ride",
-    "type": "Ride",
-    "distance": 14777.1,
-    "moving_time": 2681,
-    "start_date": "2026-02-03T06:39:23Z",
-    "average_heartrate": 130.4,
-    "max_heartrate": 144.0,
     "total_elevation_gain": 0
   }
 ]
