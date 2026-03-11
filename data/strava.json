@@ -1,5 +1,25 @@
 [
   {
+    "name": "Morning Workout",
+    "type": "Workout",
+    "distance": 0.0,
+    "moving_time": 3,
+    "start_date": "2026-03-11T07:04:31Z",
+    "average_heartrate": null,
+    "max_heartrate": null,
+    "total_elevation_gain": 0
+  },
+  {
+    "name": "Morning Walk",
+    "type": "Walk",
+    "distance": 1511.2,
+    "moving_time": 1099,
+    "start_date": "2026-03-11T06:00:06Z",
+    "average_heartrate": 77.0,
+    "max_heartrate": 88.0,
+    "total_elevation_gain": 16.6
+  },
+  {
     "name": "Morning Ride",
     "type": "Ride",
     "distance": 14253.0,
@@ -478,25 +498,5 @@
     "average_heartrate": 84.3,
     "max_heartrate": 96.0,
     "total_elevation_gain": 16.6
-  },
-  {
-    "name": "Morning Ride",
-    "type": "Ride",
-    "distance": 14709.7,
-    "moving_time": 2690,
-    "start_date": "2026-02-15T09:26:07Z",
-    "average_heartrate": 128.5,
-    "max_heartrate": 143.0,
-    "total_elevation_gain": 0
-  },
-  {
-    "name": "Rucking with dog",
-    "type": "Walk",
-    "distance": 3952.3,
-    "moving_time": 3118,
-    "start_date": "2026-02-14T14:32:10Z",
-    "average_heartrate": 90.1,
-    "max_heartrate": 122.0,
-    "total_elevation_gain": 45.4
   }
 ]
