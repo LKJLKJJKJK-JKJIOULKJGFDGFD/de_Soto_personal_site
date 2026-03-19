@@ -1,5 +1,25 @@
 [
   {
+    "name": "Morning Ride",
+    "type": "Ride",
+    "distance": 10133.5,
+    "moving_time": 1981,
+    "start_date": "2026-03-19T07:46:41Z",
+    "average_heartrate": 134.3,
+    "max_heartrate": 147.0,
+    "total_elevation_gain": 0
+  },
+  {
+    "name": "Morning Walk",
+    "type": "Walk",
+    "distance": 1411.1,
+    "moving_time": 1145,
+    "start_date": "2026-03-19T07:08:11Z",
+    "average_heartrate": 82.0,
+    "max_heartrate": 93.0,
+    "total_elevation_gain": 14.3
+  },
+  {
     "name": "Morning Workout",
     "type": "Workout",
     "distance": 0.0,
@@ -477,26 +497,6 @@
     "start_date": "2026-02-20T05:57:08Z",
     "average_heartrate": 80.0,
     "max_heartrate": 89.0,
-    "total_elevation_gain": 16.5
-  },
-  {
-    "name": "Row 10k (5x 2k)",
-    "type": "Rowing",
-    "distance": 10014.0,
-    "moving_time": 2765,
-    "start_date": "2026-02-19T06:58:55Z",
-    "average_heartrate": 127.1,
-    "max_heartrate": 143.0,
-    "total_elevation_gain": 0
-  },
-  {
-    "name": "Morning Walk",
-    "type": "Walk",
-    "distance": 1529.5,
-    "moving_time": 1078,
-    "start_date": "2026-02-19T06:19:19Z",
-    "average_heartrate": 84.3,
-    "max_heartrate": 100.0,
     "total_elevation_gain": 16.5
   }
 ]
