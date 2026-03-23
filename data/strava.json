@@ -1,5 +1,15 @@
 [
   {
+    "name": "Morning Workout",
+    "type": "Workout",
+    "distance": 0.0,
+    "moving_time": 2194,
+    "start_date": "2026-03-23T07:16:20Z",
+    "average_heartrate": 98.0,
+    "max_heartrate": 125.0,
+    "total_elevation_gain": 0
+  },
+  {
     "name": "10k row",
     "type": "Rowing",
     "distance": 10000.0,
@@ -487,16 +497,6 @@
     "start_date": "2026-02-20T17:51:15Z",
     "average_heartrate": 110.7,
     "max_heartrate": 145.0,
-    "total_elevation_gain": 0
-  },
-  {
-    "name": "Queen City Kettlebell",
-    "type": "Workout",
-    "distance": 0.0,
-    "moving_time": 2762,
-    "start_date": "2026-02-20T07:02:05Z",
-    "average_heartrate": 110.1,
-    "max_heartrate": 141.0,
     "total_elevation_gain": 0
   }
 ]
