@@ -1,5 +1,15 @@
 [
   {
+    "name": "Lunch Workout",
+    "type": "Workout",
+    "distance": 0.0,
+    "moving_time": 3487,
+    "start_date": "2026-03-27T12:11:20Z",
+    "average_heartrate": 107.8,
+    "max_heartrate": 133.0,
+    "total_elevation_gain": 0
+  },
+  {
     "name": "Row 10k",
     "type": "Rowing",
     "distance": 10000.0,
@@ -488,15 +498,5 @@
     "average_heartrate": 78.5,
     "max_heartrate": 92.0,
     "total_elevation_gain": 16.1
-  },
-  {
-    "name": "Morning Ride",
-    "type": "Ride",
-    "distance": 11238.6,
-    "moving_time": 2173,
-    "start_date": "2026-02-21T10:31:27Z",
-    "average_heartrate": 128.9,
-    "max_heartrate": 145.0,
-    "total_elevation_gain": 0
   }
 ]
